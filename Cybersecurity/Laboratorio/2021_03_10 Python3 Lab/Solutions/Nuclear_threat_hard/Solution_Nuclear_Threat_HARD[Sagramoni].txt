@@ -1,0 +1,47 @@
+file = open('./to_be_decrypted/captured_ct.txt', "rb")
+ciphertext = list(file.read())
+
+test = 'From'.encode('ASCII')
+
+# Get the first four keys
+k0 = test[0] ^ ciphertext[0]
+k1 = test[1] ^ ciphertext[1]
+k2 = test[2] ^ ciphertext[2]
+k3 = test[3] ^ ciphertext[3]
+
+n = 256
+
+A = 0
+C = 0
+stop = False
+
+# Brute-force attack to get possible A and C
+# We use the Distributive property of modular arithmetic to convert
+# (A * k + C) % n   into   ((A%n * k%n) + C%n) % n
+#
+# So, our goal is to find A%n and C%n, which are numbers in [0, 256[ range, instead of original A and C in [0, 2**128[ range
+for a in range (n):
+	for c in range (n):
+		# System with 2 equations and 2 variables, so I don't need
+		if ((a * k0 + c) % n == k1 and (a * k1 + c) % n == k2):
+			print("A = " + str(a)) 
+			print("C = " + str(c))
+			A = a
+			C = c
+			stop = True
+			break # Exit nested loop
+	
+	if (stop): break
+
+# Decipher the algorithm
+plaintext = []
+ki = k0
+
+for i in range(len(ciphertext)):
+	# Decipher ciphertext
+	plaintext.append(ki ^ ciphertext[i])
+	# Generate new key
+	ki = (A * ki + C) % n
+
+print(bytes(plaintext).decode("ASCII"))
+input()
