@@ -1,0 +1,2 @@
+https://github.com/gabrielebaris/iir-audio-filter-fpga
+https://github.com/SpeedJack/cordic-vectoring
