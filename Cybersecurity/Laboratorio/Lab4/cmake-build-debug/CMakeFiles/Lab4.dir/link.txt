@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/Lab4.dir/Soluzione/open.cpp.o CMakeFiles/Lab4.dir/Soluzione/seal.cpp.o CMakeFiles/Lab4.dir/open.cpp.o CMakeFiles/Lab4.dir/seal.cpp.o -o Lab4 
