@@ -1,0 +1,22 @@
+! Configurazione di 6RD
+
+! Configurazione di una nuova interfaccia tunnel su R1
+configure terminal
+interface Tunnel0
+no ip address
+no ip redirects
+ipv6 address 2002:a01:101:1::1/64 eui-64
+tunnel source 10.1.1.1
+tunnel mode ipv6ip 6to4
+
+!Aggiunta manualmente delle informazioni di routing
+ipv6 route 2002:a05:502::/48 Tunnel0
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+!NOTE: tale configurazione va replicata su R5

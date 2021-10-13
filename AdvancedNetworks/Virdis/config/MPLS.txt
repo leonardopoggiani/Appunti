@@ -1,0 +1,144 @@
+! Configurazione MPLS
+
+! Prima di tutto va configurato OSPF! Quindi eseguire il file OSPF.txt
+configure terminal
+! Abilitare MPLS
+! Abilitare prima CEF ( Cisco Express Forwarding )
+ip cef
+interface Ethernet0/0
+! Abilitazione del Tag Switching su questa interfaccia
+tag-switching ip
+
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+! Verifica
+show tag-switching forwarding-table
+
+! /*********************************************************/
+
+! Configurazione del TE in MPLS ( Traffic Engineering )
+
+configure terminal
+! Abilitare la creazione di tunnel MPLS per TE su questo router
+! Non sicuro... forse va tolto e lasciato quello sotto
+mpls traffic-eng tunnels
+
+interface Ethernet0/0
+mpls traffic-eng tunnels
+! RSVP adottato anche come Controllo di Ammissione( accesso )
+! Tale comando abilita la creazione di tunnel MPLS sull'interfaccia specificando la banda riservabile e il più grande flusso riservabile sull'interfaccia 
+ip rsvp bandwidth 512 512
+
+router ospf 100
+mpls traffic-eng area 1
+! Abilita l'estensione TE su OSPF
+mpls traffic-eng router-id Loopback0
+
+exit
+
+! Definizione di un tunnel
+interface Tunnel0
+ip unnumbered Loopback0
+tunnel destination 172.16.1.5 
+tunnel mode mpls traffic-eng
+tunnel mpls traffic-eng autoroute announce
+! Priorità di prenotazione per il canale
+tunnel mode mpls traffic-eng priority 2 2
+tunnel mode mpls traffic-eng bandwidth 400
+! Il percorso del tunnel sarà selezionato dinamicamente
+tunnel mode mpls traffic-eng path-option 1 dynamic
+
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+! Verifica dello stato
+show mpls traffic-eng tunnels
+
+! ********************************************************
+! Altra possibilità sulla definizione di un tunnel
+! Definizione di un tunnel con path esplicito
+interface Tunnel1
+ip unnumbered Loopback0
+tunnel destination 172.16.1.5 
+tunnel mode mpls traffic-eng
+tunnel mpls traffic-eng autoroute announce
+! Priorità di prenotazione per il canale
+tunnel mode mpls traffic-eng priority 2 2
+tunnel mode mpls traffic-eng bandwidth 400
+
+! !!!!! **** ATTENZIONE **** !!!! La differenza è in questo comando
+! Explicit indica che il path lo specifico io, Name è il nome path
+tunnel mode mpls traffic-eng path-option 1 explicit name longpath
+
+! Come BACKUP! Indichiamo anche un'alternativa dinamica
+tunnel mode mpls traffic-eng path-option 2 dynamic
+
+! Definizione del percorso
+ip explicit-path name longpath enable
+next-address 10.2.2.2
+next-address 10.3.3.2
+next-address 10.4.4.2
+
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+! Verifica dello stato
+show ip route
+
+! ********************************************
+
+! Possibilità aggiuntive
+
+! Con lo scopo di fare Load Balancing, è possibile impostare due Route STATICHE
+conf t
+ip route 192.168.101.0 0.0.0.255 Tunnel0
+ip route 192.168.102.0 0.0.0.255 Tunnel1
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+! ********************************************
+
+! Possibilità aggiuntive
+
+! Policy Based Routing e MPLS-TE
+! Definizione delle Classificazione
+access-list 1 permit 192.168.1.2 0.0.0.0
+
+! Definizione del Marcamento
+interface Ethernet0/0
+ip policy route-map priority
+route-map prio permit 10
+match ip address 1
+set interface Tunnel 0
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+
+
+

@@ -1,0 +1,15 @@
+! Configurazione di Indirizzo IPv6
+
+configure terminal
+interface Ethernet0/0
+ipv6 enable
+ipv6 address 2001:aaaa:bbbb:cccc::/64 eui-64
+ipv6 unicast-routing
+
+show ipv6 interface Ethernet0/0
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config

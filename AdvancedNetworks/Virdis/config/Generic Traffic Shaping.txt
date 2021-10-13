@@ -1,0 +1,22 @@
+! Configurazione del Traffic Shaping
+
+configure terminal
+! Definizione del Classificatore
+! Aggiungo uno shaper
+interface Ethernet1/0
+! Cambio il campo precedenza quando il traffico eccede il limite
+traffic-shape rate 256000
+
+! Applico selettivamente il traffic shape
+access-list 101 permit ip any any precedence 7
+traffic-shape group 101 rate 256000
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+! Verifica
+show traffic-shape Ethernet1/0

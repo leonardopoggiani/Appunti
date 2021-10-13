@@ -1,0 +1,57 @@
+Mingozzi
+
+IPV6
+- Neighbour Discovery Protocol: descrizione e a cosa serve ( es: path mtu discovery + stateless adress ) **
+    - Stateless Address Autoconfiguration
+- Spazio di indirizzamento IPv6 (in poche parole global unicast etc)
+
+6LowPan
+- Differenza tra mesh under e route over, in quale categoria rientra RPL?
+
+RPL **
+- Rank: scopo e come viene assegnato
+- Rilevazione loop in RPL
+- Global & Local Repair
+
+COAP
+- Coap Observing
+
+Quality Of Service
+- Max Min Fairness e discorsi annessi (progressive filling algorithm, come mai l'hanno chiamato così, Golestani (Relative Fairness Index)) **
+- GPS: cosa é, che caratteristiche ha, quale é la formula che rappresenta il GPS
+- WFQ, problemi, differenze con GPS( pregi e difetti e formule ) e come viene implementato;
+- DRR: Deficit Round Robin, come funziona e motivo per cui DC deve essere limitato  **
+- Policing e Shaping: cosa sono e qual'è la differenza tra loro
+- Active Queue Management **
+	- Tecnica per evitare la global synchronization in TCP nelle code
+	- Com'è gestita la coda dei pacchetti (quindi tutta la parte (Weighted) Random Early Detection)
+	
+MPLS
+- Formazione LSP, label stacking
+- Label Distribution Protocol ( vari tipi ) **
+	- nel dettaglio, in particolare chiedeva di quali FEC viene fatto l'advertising.
+- Utilizzo delle label fino a Fast Re-Routing.
+- Fast Re-Routing **
+	
+BGP
+- Differenza con OSPF o altri protocolli per autonomous system. Perché bgp utilizza tcp per comunicare? cosí i messaggi sono scambiati SOLO tra router remoti, solo tra border router, é come se comunicassero direttamente. in OSPF i messaggi sono scambiati tra qualsiasi router vicino quindi anche quelli dentro lo stesso AS.
+
+VPN, in particolare l'ultima parte con la soluzione definitiva
+- Come funzionano le VPN: funzionamento, quali tunnel vanno stabiliti e perché, ruolo di MPLS all'interno delle VPNs
+- Differenza fra peer to peer e overlay
+/************************************************************
+ 
+Vallati 
+- SDN: scopo, struttura, vantaggi ****
+- OpenFlow: ruolo e funzionamento ****
+- 6To4 a cosa serve e come funziona
+- Cosa deve fare la root in una rete RPL
+- COAP
+
+/***************************************************/
+NOTE su Mingozzi
+- Fa 3 domande, ( una delle 3 può essere di Vallati )
+- Se le cose uno le sa, il professore non fa finire nemmeno l'argomento
+- VPN ARGOMENTO HOT! chiesto molto spesso
+
+- Vallati chiede sempre SDN, quasi sempre solo quell'argomento

@@ -1,0 +1,27 @@
+! Configurazione di Policy Based Routing
+
+configure terminal
+!Definizione della Classificazione
+access-list 1 permit 192.168.1.2 0.0.0.0
+
+!Definizione del Marking
+interface Ethernet0/0
+ip policy route-map prio
+! La prima regola a + alta priorità, per tutto il traffico in arrivo sull'indirizzo 192.168.1.2
+route-map prio permit 10
+match ip address 1
+set ip precedence 5
+! La seconda regola, a priorità inferiore, per tutto il resto del traffico
+route-map prio permit 40
+set ip precedence 4
+
+! Per DISABILITARE la policy
+! PRB può solamente settare la priorità di un IP e il ToS
+!no ip policy route-map prio
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config

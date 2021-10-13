@@ -1,0 +1,18 @@
+! Configurazione di Rate Limit Based sulla Precedenza
+
+configure terminal
+! Definizione del Classificatore
+! Classifico il traffico basato sul suo valore prededenza ( o dscp )
+access-list 101 permit ip any any precedence 7
+
+!Definizione del Marcatore e della funzione di Policing
+interface Ethernet0/0
+! Cambio il campo precedenza quando il traffico eccede il limite
+rate-limit input access-group 101 100000 200000 200000 conform-action transmit exceed-action set-prec-transmit 2
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config

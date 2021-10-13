@@ -1,0 +1,93 @@
+Distributed Systems and MiddleWare Technologies, questions 2021-02-22
+
+Memory organization on the Java Virtual Machine
+
+Bully Algorithm. What hypotesis do I need to use it?
+    - reliable delivery
+    - synchronous system, in order to have an upper bound on response time
+    - all nodes know the IDs for the other peers
+    
+DAG. A total order can be useful, instead of a partial one. Why?
+Kahn's algorithm. Why do I need to have an acyclic graph?
+
+Architecture of an RPC system.
+What are the issues with values management?
+    - Marshalling / Serialization
+    - References
+    
+Synchronization of Physical Clocks. External and internal synchronization.
+Berkeley algorithm. A time difference is written in the update message. Why?
+Talk about skew and drift.
+
+Erlang: tuples and lists. What are they?
+How to write them? How do they differ? How can they be modified?
+List comprehension: what is? Give an example.
+
+Garbage collection in a distributed system.
+ROT - Reference Table, maps local references with remote ones.
+dirty() clean() and getRef(), what problems do they address?
+
+Asynchronous tasks and executors.
+submit() and Future
+How are different kind of data handled? Generics/Templates <>
+
+Lamport timestamps. What are they used for? Describe algorithm.
+Why do we use them instead of physical clocks?
+Can you use the Lamport timestamp for a total order? No, because there are simultaneous events that can have the same timestamp (they only respect a partial order constraint).
+Can you modify it in order to add this feature? Yes. Just use the process ID in order to solve ambiguities in case you have the same timestamp.
+
+Java templates for HTTP requests/responses. JSP: Java Server Pages.
+
+Higher Order Functions. What are the tools of Erlang that allow you to work with these functions?
+How can you define a custom map() function? Write down the code.
+
+Servlet. What is their lifecycle?
+Use one of them, two of them? When and how?
+
+Actor Model: describe the model and how can it be implemented in a language you know (Erlang).
+Let's use OTP for process communication and spwan() in order to start the computation on other nodes.
+Behaviour change: how? How to maintain the state?
+
+Snapshot algorithms. What are they? What problems do they need to solve? What algorithms did we see?
+Talk about Chandy-Lamport. What assumptions do you need?
+    - FIFO channels (to make consistent cuts)
+    - Fully connected graph
+    
+Thread pooling. What do we need it for? Why does it give us advantages? What instruments does Java provide to use this techinque?
+
+Erlang. How to implement filter() on a list. Write code.
+
+EJB. How are they handled by an application server? What is their lifecycle?
+
+Vector timestamp. What are they? What do we use them for? Give an example.
+
+Erlang. Quick sort algorithm. Implement it, exploting recursion.
+
+Amdhal's law. Speedup. What results do we achieve? Superscalar.
+
+Web applications. Sessions. What is a session? What techinques can be used to track a session? Cookies.
+Also: use of hidden fields, unique IDs in URLs.
+
+Erlang recursion. How is it handled? Are there specific problems? How must the programmer behave?
+Usage of recursive and iterative constructs.
+Problem of the stack. Tail recursion. Give an example code.
+Any drawbacks? Yes, you cannot use backtracing in the debugger.
+
+Request/Reply protocols.
+
+Web applications in Java. What is the typical structure of a web app?
+Talk about MVC pattern. Servlet and JSP, how do they match with the MVC?
+How can you organize the business logic? EJB.
+Session bean, Message Bean (Stateful, Stateless, Singleton)
+In case of data persistency on disk, what can the app server do? And the EJB?
+Pooling on Factory objects, in order to limit the overhead of instantiating a new object for every database connection.
+
+Erlang. Write a flattening function for lists.
+
+Erlang processes. How to handle them? What operations can you do with them? Local and remote execution.
+spawn, send (!) and receive
+node@hostname notation. What is the cookie?
+
+Distributed algorithms. Richart-Agarawalacomecazzosiscrive In what context is it used? Mutual exclusion.
+Steps of the algorithm.
+

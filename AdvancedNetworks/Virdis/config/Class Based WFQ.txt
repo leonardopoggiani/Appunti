@@ -1,0 +1,73 @@
+! Configurazione di Class-Based WFQ
+
+configure terminal
+! Classificazione basata su DSCP
+! Classica il traffico basato sul valore di DSCP
+class-map match-all VOIP
+match dscp ef
+class-map match-all EXCESS
+match dscp af43
+class-map match-all WEB
+match dscp af33
+class-map match-all VIDEO
+match dscp af13
+
+
+! Allocazione della banda
+policy-map OUT
+class VOIP
+! Setta la banda condivisa per questo traffico
+bandwidth percent 30
+! Limita il numero di pacchetti che possono essere incodati per una certa classe
+queue-limit 100 packets
+
+class VIDEO
+bandwidth percent 60
+
+class WEB
+bandwidth percent 4
+queue-limit 20 packets
+
+class EXCESS
+bandwidth percent 4
+
+exit
+
+
+! NOTE: un'altra possibilità è definire la classi basati sulla precedenza dell'IP
+! Interfaccia di Ingresso
+!class-map server
+!match input-interface Ethernet0/0
+!policy-map servbandwidth
+!class server
+!bandwidth 3000
+
+! Campo precedenza
+!class-map class0
+!match ip precedence 4
+!policy-map class0policy
+!class class0
+!bandwidth 3000
+
+
+
+! Applicazione della configurazione su una certa Interfaccia
+interface Serial1/0
+service-policy output OUT
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+
+! TESTING
+
+! Ottieni informazioni su CBWFQ
+show policy goldservice
+show class goldservice
+
+! Ottieni delle statistiche
+show policy-map interface

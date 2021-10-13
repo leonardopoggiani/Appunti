@@ -1,0 +1,16 @@
+! Configurazione di RIPv6
+
+configure terminal
+ipv6 unicast-routing
+interface Ethernet0/0
+ipv6 rip process1 enable
+
+! Per vedere la tabella di routing
+show ipv6 route
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config

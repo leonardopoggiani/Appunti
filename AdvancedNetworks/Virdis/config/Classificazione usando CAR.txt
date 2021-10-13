@@ -1,0 +1,24 @@
+! Configurazione di Classificazione usando CAR
+
+configure terminal
+!Classificazione del traffico basato sul Protocollo di Trasporto o Applicazione
+! Policing SOLO sul traffico UDP proveniente da 192.168.1.2
+access-list 101 permit udp 192.168.1.2 0.0.0.0
+
+!Definizione del Marking
+interface Ethernet0/0
+! Limita TUTTO il traffico a 10 Mbps ("continue" significa -> verifica altre regole)
+rate-limit input 10000000 2000 2000 conform-action continue exceed-action drop
+
+! Limita il traffico proveniente da 192.168.1.2 a 1 Mbps
+rate-limit input access-group 101 1000000 200000 200000 conform-action set-dscp-transmit cs3 exceed-action drop
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+!Verifica dello stato
+show interfaces Ethernet0/0 rate

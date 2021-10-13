@@ -1,0 +1,23 @@
+! Configurazione di RED
+
+! RED è un meccanismo di Congestion Avoidance
+
+configure terminal
+! Abilitazione di RED
+interface Ethernet1/0
+random-detect
+
+!Sintonizzo RED basato sulla precedenza dell'IP
+! Forma del comando: random-detect precedence <prec-value> <minimun-threshold> <maximum-threshold> <mark-prob-den>
+! La soglia (threshold) è in termini di pacchetti
+random-detect precedence 5 1000 3000 10
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
+
+! Verifica dello stato di RED
+show queueing random-detect

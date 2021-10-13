@@ -1,0 +1,30 @@
+! Configurazione di Classificazione basata su Protocollo
+
+configure terminal
+!Classificazione del traffico basato sul Protocollo di Trasporto o Applicazione
+access-list 101 permit tcp any any
+access-list 102 permit udp any any
+
+!Definizione del Marking
+interface Ethernet0/0
+ip policy route-map prio
+! La prima regola a + alta priorità, per tutto il traffico di tipo TCP
+route-map prio permit 20
+match ip address 101
+set ip precedence 6
+! La seconda regola, a priorità inferiore, per tutto il traffico di tipo UDP
+route-map prio permit 30
+match ip address 102
+set ip precedence 4
+
+
+! Per DISABILITARE la policy
+! PRB può solamente settare la priorità di un IP e il ToS
+!no ip policy route-map prio
+
+no shutdown
+exit
+
+exit
+! salvo tutto
+copy running-config startup-config
