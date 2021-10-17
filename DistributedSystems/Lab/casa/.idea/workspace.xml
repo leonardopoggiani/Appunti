@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96302634-2420-4300-8c0e-f4bb9af467e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/casa.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reverse.beam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reverse.erl" afterDir="false" />
-    </list>
+    <list default="true" id="96302634-2420-4300-8c0e-f4bb9af467e6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1634219404195</updated>
       <workItem from="1634219408523" duration="3815000" />
+      <workItem from="1634299791136" duration="19000" />
     </task>
     <servers />
   </component>
@@ -102,6 +95,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
