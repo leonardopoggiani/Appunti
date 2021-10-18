@@ -20,7 +20,8 @@ class IrisClassifier:
         self.data = load_iris()
 
     def segregation(self):
-        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.data['data'], self.data['target'])
+        self.x_train, self.x_test, self.y_train, \
+        self.y_test = train_test_split(self.data['data'], self.data['target'])
 
     def train(self):
         self.trained_model = MLPClassifier(max_iter=self.epochs, random_state=1).fit(self.x_train, self.y_train)
