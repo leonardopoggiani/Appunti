@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                font-size:1em;
+                margin:0;
+                padding:0;
+            }
+            h1 {
+                font: bold 2.5em Helvetica, sans-serif;
+                text-align: center;
+                margin:.5em;
+            }
+            ol {
+                color: #ccc;
+                list-style-type: none;
+            }
+            ol li {
+                position: relative;
+                font: bold italic 52px/1.5 Helvetica, Verdana, sans-serif;
+                margin-bottom: 20px;
+            }
+            li p {
+                font: 30px/1.5 Helvetica, sans-serif;
+                padding-left: 70px;
+                color: #555;
+                margin-bottom: 60px;
+            }
+            span {
+                position: absolute;
+            }
+        </style>
+
+        <title>Assignments for Lab Session 1</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <H1>ASSIGNMENTS for Lab Session 1</H1>
+        <br>
+
+        <ol>
+            <li><span>1</span><p>Write an Erlang module named "lab_01" with a 
+            function <em>hello/0</em> that prints on the screen the sentence 
+            "Hello World!" using the function <em>io:format/1</em>. <br>
+            Compile the module from the shell and call the developed function.
+            </p>
+            </li>
+            
+            <li><span>2</span><p>In the developed module, insert another 
+            function <em>hello/1</em> that takes a string as argument and 
+            prints on the screen "Hello", followed by the passed string. 
+            Use the function for formatted print <em>io:format/2</em>; 
+            the placeholder for strings in the template string is "~s".<br> 
+            Test it from the shell.</p>
+            </li>
+            
+            <li><span>3</span><p>Add another function <em>hello/2</em> that 
+            behaves like the previous one, but prints the sentence on the 
+            screen as many times as indicated by the last argument.</p>
+            </li>
+
+            <li><span>4</span><p>Write the function <em>rsum/1</em> that, given 
+            a list of numbers, returns their sum, computed recursively.<br>
+            For the sake of performance, it must be implemented using tail 
+            recursion.</p>
+            </li>
+            
+            <li><span>5</span><p>Write a function <em>take/2</em> that, given an
+            integer and a list, returns the list element at the position 
+            indicated by the first parameter.<br>
+            BTW: the function <em>lists:nth/2</em> in the standard Erlang 
+            library serves exactly this purpose.</p>
+            </li>
+            
+            <li><span>6</span><p>Implement the function <em>reverse/1</em> that 
+            takes a list and returns it reversed: <br>
+            e.g.<em>reverse([1,2,3])</em> gives <em>[3,2,1]</em>.<br>
+            Note: the concatenation of two lists can be obtained by the 
+            operator "++".</p>
+            </li>
+            
+            <li><span>7</span><p>Implement a function that returns the maximum 
+            element of a list of numbers passed as argument.<br> 
+            Possibly, develop one version using "case" and another using "if".
+            </p>
+            </li>
+            
+            <li><span>8</span><p>Implement the function <em>splitter/1</em> 
+            that takes a list of integers and separates its elements in two 
+            lists, one with its even elements, and the other with the odd 
+            elements.<br> 
+            It must return a tuple with both the calculated lists.<br>
+            Optionally, write a generalized version <em>splitter/2</em> that 
+            takes also a predicate as parameter, and splits the elements 
+            according to the predicate outcome.</p>
+            </li>
+            
+            <li><span>9</span><p>Write a function that, given a list of numbers, returns 
+            a list with values that correspond to half of values in the input list.<br>
+            Develop a plain recursive solution, then a solution based on a 
+            list comprehension. 
+            Possibly, develop yet another one that makes use of <em>lists:map/2</em>.</p>
+            
+            <li><span>10</span><p>Write a function that, given a mathematical function 
+            R -> R, returns a function that approximates its derivative.</p>
+            
+        </ol>
+    </body>
+</html>

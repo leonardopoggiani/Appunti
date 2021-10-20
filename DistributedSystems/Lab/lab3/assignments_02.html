@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                font-size:1em;
+                margin:0;
+                padding:0;
+            }
+            h1 {
+                font: bold 2.5em Helvetica, sans-serif;
+                text-align: center;
+                margin:.5em;
+            }
+            ol {
+                color: #ccc;
+                list-style-type: none;
+            }
+            ol li {
+                position: relative;
+                font: bold italic 52px/1.5 Helvetica, Verdana, sans-serif;
+                margin-bottom: 20px;
+            }
+            li p {
+                font: 30px/1.5 Helvetica, sans-serif;
+                padding-left: 70px;
+                color: #555;
+                margin-bottom: 60px;
+            }
+            span {
+                position: absolute;
+            }
+        </style>
+
+        <title>Assignments for Lab Session 2</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <H1>ASSIGNMENTS for Lab Session 2</H1>
+        <br>
+
+        <ol>
+        	<li><span>1</span><p>Implement the function <em>flatten(L)</em> 
+        	that flattens the argument list L. A flattened list has no list as 
+        	an element. 
+        	Flattening L means producing a list from L by substituting each 
+        	list in it with the corresponding elements deriving from its 
+        	flattening.<br>
+        	E.g.: [1,[2,3,[4,5]], 6,[7]] ---> [1,2,3,4,5,6,7]<br><br>
+        	BTW: there exists also the function <em>lists:flatten/1</em></p>
+            </li>
+            
+            <li><span>2</span><p>Write a server that receives one number per 
+            request, and at each request prints out the average of all the 
+            numbers received so far and replies back with such a result.<br>
+            Write a "client" function to test the server.</p>
+            </li>
+            
+            <li><span>3</span><p>Write an Erlang process able to setup and use a RING of N 
+            processes (being itself part of it); let's refer to it as 
+            the "coordinator". Each process in the ring (but the coordinator) must be 
+            able to receive a message ("token") and forward it to the next node. 
+            The coordinator receives <em>commands</em> on what to do by means of dedicated 
+            incoming messages. In particular, the coordinator can be asked to perform R 
+            rounds of tokens on the ring.<br>
+            Test the system by first setting up a ring of 5 processes, and then ask 
+            the coordinator to perform 3 rounds of "token passing" on the ring.</p>
+            </li>
+                      
+            <li><span>4</span><p>Write an Erlang process - the "coordinator" - able to 
+            spawn N processes and to communicate with each of them (thus, according to a 
+            STAR topology). Any process at a star end must be able to echo back to the 
+            coordinator one specially-structured message ("baton").<br> 
+            The coordinator receives <em>commands</em> on what to do by means of 
+            dedicated incoming messages. 
+            In particular, the coordinator can be asked to perform B 
+            bounces of batons on the star: a bounce corresponds to sending a baton to 
+            all the "end" processes and getting all the replies back from them.<br>
+            Possibly, add the ability to terminate the processes at the star ends
+            (w/o being killed!).</p>
+            </li>
+            
+                        
+        </ol>
+    </body>
+</html>
