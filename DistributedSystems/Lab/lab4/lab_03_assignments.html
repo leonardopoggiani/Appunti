@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                font-size:1em;
+                margin:0;
+                padding:0;
+            }
+            h1 {
+                font: bold 2.5em Helvetica, sans-serif;
+                text-align: center;
+                margin:.5em;
+            }
+            ol {
+                color: #ccc;
+                list-style-type: none;
+            }
+            ol li {
+                position: relative;
+                font: bold italic 52px/1.5 Helvetica, Verdana, sans-serif;
+                margin-bottom: 20px;
+            }
+            li p {
+                font: 30px/1.5 Helvetica, sans-serif;
+                padding-left: 70px;
+                color: #555;
+                margin-bottom: 60px;
+            }
+            span {
+                position: absolute;
+            }
+        </style>
+
+        <title>Assignments for Lab Session 3</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <H1>ASSIGNMENTS for Lab Session 3</H1>
+        <br>
+
+        <ol>
+        	
+            <li><span>1</span><p>Implement in Erlang a LIFO stack by means of a  
+            server process, along with the relative operations <em>push/2</em>, 
+            <em>pop/1</em>, and <em>peek/1</em>.<br> 
+            Develop such functions (APIs) to hide the process-based nature 
+            of the data structure.<br>
+            Possibly, develop it in a form to be spawnd on any connected Erlang 
+            node, and used remotely as well.</p>
+            </li>
+            
+            <li><span>2</span><p>Write an Erlang  server that delegates the 
+            execution of provided services (requested by dedicated messages) 
+            to other different processes spawn by the server at its start.
+            E.g. the provided services could be the "add" and "sub" operations, 
+            actually executed by the two "adder" and "subtracter" processes, 
+            respectively.<br>
+            Replies to clients must be handled by the delegates.<br>
+            Possible variation: a delegate is created for each request, and 
+            terminates after replying back to the client.</p>
+            </li>
+            
+            <li><span>3</span><p>Implement the Erlang function <em>sleep/1</em> 
+            that makes the executing process suspend its execution (as long as 
+            indicated by the argument, in milliseconds).<br> 
+            Test it from the shell.<br>
+            Then, implement a function periodic_task/2 that, given a function 
+            and a period <em>P</em>, triggers the input function every 
+            <em>P</em> ms.<br>
+            Test it from the shell.<br>
+            Question: how to modify such a function if we want the task 
+            executions to be <em>spaced</em> by <em>P</em> ms?
+            </p>
+            </li>
+            
+            <li><span>4</span><p>Provide a solution in Erlang to the classical 
+            "Bounded Buffer" problem.<br>
+            Test it from the shell.
+            </p>
+            </li>
+            
+            <li><span>5</span><p>Develop an implementation of the "Averaging 
+            server" (Lab 02 Exercise 2) that exploits OTP gen_server.</p>
+            </li>
+            
+                        
+        </ol>
+    </body>
+</html>
