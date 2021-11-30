@@ -1,0 +1,19 @@
+name: TelnetServer
+description: TelnetServer
+provider: UNIPI
+nfvo_version: 6.0.0
+vim_types:
+- docker
+image:
+upload: "false"
+names:
+- "rohan/ascii-telnet-server:latest"
+link: "rohan/ascii-telnet-serverlatest"
+image-config:
+name: "rohan/ascii-telnet-server:latest"
+diskFormat: QCOW2
+containerFormat: BARE
+minCPU: 0
+minDisk: 0
+minRam: 0
+isPublic: false
